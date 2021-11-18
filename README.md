@@ -4,7 +4,7 @@
 # Building the project
  **Since this was made in .NET 6.0, to build the project you will need to have .NET 6.0 installed. Alternatively if you don't have it installed, you can copy and paste all of the code in older version of .NET.**
 
-# A little big of information
+# A little bit of information
  **To use a little characters as possible I am using the following abbreviations:**
  > D - Discord
 
