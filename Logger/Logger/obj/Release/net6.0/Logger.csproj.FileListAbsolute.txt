@@ -1,0 +1,15 @@
+C:\Users\hrist\source\repos\Logger\Logger\bin\Release\net6.0\Logger.exe
+C:\Users\hrist\source\repos\Logger\Logger\bin\Release\net6.0\Logger.deps.json
+C:\Users\hrist\source\repos\Logger\Logger\bin\Release\net6.0\Logger.runtimeconfig.json
+C:\Users\hrist\source\repos\Logger\Logger\bin\Release\net6.0\Logger.dll
+C:\Users\hrist\source\repos\Logger\Logger\bin\Release\net6.0\ref\Logger.dll
+C:\Users\hrist\source\repos\Logger\Logger\bin\Release\net6.0\Logger.pdb
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\Logger.csproj.AssemblyReference.cache
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\Logger.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\Logger.AssemblyInfoInputs.cache
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\Logger.AssemblyInfo.cs
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\Logger.csproj.CoreCompileInputs.cache
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\Logger.dll
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\ref\Logger.dll
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\Logger.pdb
+C:\Users\hrist\source\repos\Logger\Logger\obj\Release\net6.0\Logger.genruntimeconfig.cache
