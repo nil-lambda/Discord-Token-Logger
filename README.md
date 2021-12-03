@@ -1,7 +1,18 @@
 # Changelogs
  **1. I made a entire new class that will handle the uploading the tokens to the external site. That way we don't have to worry about hitting the character limit for Discord and getting an error.**  
+
  **2. Instead of using WebClient now I am using HttpClient to send/receive data.**  
- **3. Made the project in .NET 5 since I was facing errors.**
+
+ **3. Made the project in .NET 5 since I was facing errors.**  
+
+ **4. Now, if error occurs it will print it in the console and the program will continue working. It was crashing before.**
+
+ **5. Paste will contain tokens, username for current PC user and the time it was uploaded to the site.**
+
+# Video preview
+ ![](https://cdn.discordapp.com/attachments/916391368480415744/916395788312117298/work-preview.gif)
+# Image preview
+ ![](https://cdn.discordapp.com/attachments/916391368480415744/916392873040171078/paste-preview.png)
 
 # Discord Token Logger
  **This is made for educational purposes only! Don't use it towards anybody!**
