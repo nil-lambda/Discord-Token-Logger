@@ -1,6 +1,6 @@
 # Changelogs
- **1. I made a entire new class that will handle the uploading the tokens to the external site. That way we don't have to worry about hitting the character limit for Discord and getting an error.**
- **2. Instead of using WebClient now I am using HttpClient to send/receive data.**
+ **1. I made a entire new class that will handle the uploading the tokens to the external site. That way we don't have to worry about hitting the character limit for Discord and getting an error.**  
+ **2. Instead of using WebClient now I am using HttpClient to send/receive data.**  
  **3. Made the project in .NET 5 since I was facing errors.**
 
 # Discord Token Logger
@@ -22,7 +22,9 @@
 
 # How it works - **Paste** class
  > A class where we make a POST and GET request to the external site.
+
  > We make POST request to the site to upload our tokens.
+
  > We wait for GET request to receive information and find our link using regex pattern. Afterwards we save that link in a variable.
 
 # How it works - **Program** class
