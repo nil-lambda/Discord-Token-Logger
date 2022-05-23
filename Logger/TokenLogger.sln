@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TokenLogger", "TokenLogger\TokenLogger.csproj", "{197CB4D7-D4D7-45F4-8532-6E822CE61ADF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E0B4FD60-6445-4659-96DF-54FF1C534B11}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{197CB4D7-D4D7-45F4-8532-6E822CE61ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{197CB4D7-D4D7-45F4-8532-6E822CE61ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{197CB4D7-D4D7-45F4-8532-6E822CE61ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{197CB4D7-D4D7-45F4-8532-6E822CE61ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81D1EB68-8BCC-440B-9871-E51C2E09A85C}
+	EndGlobalSection
+EndGlobal
